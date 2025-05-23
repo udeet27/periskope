@@ -1,6 +1,5 @@
-'use client';
+/* 'use client';
 
-import { PaperAirplaneIcon, PaperClipIcon, FaceSmileIcon, ClockIcon, SparklesIcon, DocumentTextIcon, MicrophoneIcon } from '@heroicons/react/24/outline';
 import { useState, useEffect, useRef } from 'react';
 import { createClient } from '@/lib/supabase/client';
 
@@ -135,3 +134,4 @@ export default function SendMessage() {
     </div>
   );
 }
+  */
