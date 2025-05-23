@@ -15,11 +15,7 @@ interface Chat {
   created_at: string;
 }
 
-interface ChatsListProps {
-  onSelectChat: (chatId: string) => void;
-}
-
-const ChatsList: React.FC<ChatsListProps> = ({ onSelectChat }) => {
+const ChatsList: React.FC = () => {
   const [chats, setChats] = useState<Chat[]>([]);
   const [loading, setLoading] = useState<boolean>(true);
   const [error, setError] = useState<string | null>(null);
@@ -107,19 +103,24 @@ const ChatsList: React.FC<ChatsListProps> = ({ onSelectChat }) => {
                     </svg>
                   )}
                 </div>
-                <div className="flex-1 min-w-0">
-                  <p className="text-sm font-medium text-gray-900 truncate">
-                    {chat.group_name || "Unnamed Chat"}
-                  </p>
-                  <p className="text-xs text-gray-500 truncate">
-                    {chat.group_description || "No description"}
-                  </p>
-                </div>
-                <div className="ml-2">
-                  <p className="text-xs text-gray-500">
-                    {new Date(chat.created_at).toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
-                  </p>
-                </div>
+                <span className="font-semibold text-xs text-gray-900 truncate mt-[-6]">
+                  {chat.group_name || "Unnamed Chat"}
+                </span>
+              </div>
+              <div className="flex justify-end">
+                <p className="text-[0.60rem] text-gray-500">
+                  {new Date(chat.created_at)
+                    .toLocaleString("en-IN", {
+                      timeZone: "Asia/Kolkata",
+                      day: "2-digit",
+                      month: "short",
+                      year: "2-digit",
+                      hour: "2-digit",
+                      minute: "2-digit",
+                      hour12: true,
+                    })
+                    .replace(/,/g, "")}
+                </p>
               </div>
             </li>
           ))}
